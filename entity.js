@@ -66,7 +66,7 @@ function addConflict(){
 	document.getElementById("data").innerHTML = entity.data;
 }
 function addCapes(){
-	entity.capeGather();
+	if (entity.capeGather() == true){
 	document.getElementById("capes").innerHTML = entity.capes;
 	document.getElementById("data").innerHTML = entity.data;
 	var capeHolder = new cape(0,0,0,0);
@@ -77,6 +77,15 @@ function addCapes(){
 	document.getElementById("classification").innerHTML = entity.capePopulation[0].ability;
 	document.getElementById("name").innerHTML = "John Doe";
 	document.getElementById("health").innerHTML = "Survivability: " + entity.capePopulation[0].health;
+	}
 }
-
-
+function conflictHarvest(){
+	pass = 0;
+	for (var i = entity.capePopulation.length - 1; i >= 0; i--) {
+		pass += entity.capePopulation[i].power;
+	}
+	entity.conflictGather(pass);
+	document.getElementById("conflict").innerHTML = entity.conflict;
+	document.getElementById("data").innerHTML = entity.data;
+}
+setInterval(conflictHarvest, 1000);
