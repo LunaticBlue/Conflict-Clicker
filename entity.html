@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+ <title>Entity Simulator Zero</title>
+ </head>
+<body>
+<h1>Entity Simulator Zero.</h1>
+<h2 id="race">Race: </h2>
+<div>
+	<button onclick="addData()" type="button"><strong>[DATA]</strong></button>
+	<span>Data: </span>
+	<span id="data">0</span>
+</div>
+<div>
+	<button onclick="addConflict()" type="button"><strong>Add 25 Conflict (DEV)</strong></button>
+	<span>Conflict: </span>
+	<span id="conflict">0</span>
+</div>
+<div>
+	<button onclick="addCapes()" type="button"><strong>Prime Trigger (10 Data)</strong></button>
+	<span>Capes: </span>
+	<span id="capes">0</span>
+</div>
+<div>
+	<button class="chooseRace" onclick="entity.chooseRace('warrior')" type="button">Choose Warrior</button>
+	<button class="chooseRace" onclick="entity.chooseRace('judge')" type="button">Choose Judge</button>
+	<button class="chooseRace" onclick="entity.chooseRace('scholar')" type="button">Choose Scholar</button>
+	<button class="chooseRace" onclick="entity.chooseRace('gardener')" type="button">Choose Gardener</button>
+</div>
+<!-- temporary -->
+<div>
+	<p>Parahuman 1:</p>
+	<span id="name"></span>
+	<span id="classification"></span>
+	<span id="power"></span>
+	<span id="health"></span>
+</div>
+
+
+<script src="resources/js/entity.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+</body>
+</html>
