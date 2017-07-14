@@ -2,7 +2,23 @@
 <html lang="en">
  <head>
  <title>Entity Simulator Zero</title>
- </head>
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<style>
+ 	table{
+ 		background: grey;
+ 		border: 1px solid black;
+ 	}
+ 	tr{
+ 		margin: 10px;
+ 	}
+ 	#capelist{
+ 		width:100%;
+ 	}
+ 	#capelist ul{
+ 		font-size: 11px;
+ 	}
+</style>
+</head>
 <body>
 <h1>Entity Simulator Zero.</h1>
 <h2 id="race">Race: </h2>
@@ -29,57 +45,22 @@
 	<span id="capes">0</span>
 </div>
 <!-- temporary -->
-<div>
-	<p>Parahuman 1:</p>
-	<span id="name"></span>
-	<span id="classification"></span>
-	<span id="power"></span>
-	<span id="health"></span>
+<div id="capelist" class="container">
+	<div class="row">
+		<div class="col-sm-1"><p><strong>Mover</strong></p></div>
+		<div class="col-sm-1"><p><strong>Shaker</strong></p></div>
+		<div class="col-sm-1"><p><strong>Brute</strong></p></div>
+		<div class="col-sm-1"><p><strong>Breaker</strong></p></div>
+		<div class="col-sm-1"><p><strong>Master</strong></p></div>
+		<div class="col-sm-1"><p><strong>Tinker</strong></p></div>
+		<div class="col-sm-1"><p><strong>Blaster</strong></p></div>
+		<div class="col-sm-1"><p><strong>Thinker</strong></p></div>
+		<div class="col-sm-1"><p><strong>Striker</strong></p></div>
+		<div class="col-sm-1"><p><strong>Changer</strong></p></div>
+		<div class="col-sm-1"><p><strong>Trump</strong></p></div>
+		<div class="col-sm-1"><p><strong>Stranger</strong></p></div>
+	</div>
 </div>
-<table>
-	<tr>
-		<th>Mover</th>
-		<th>Shaker</th>
-		<th>Brute</th>
-		<th>Breaker</th>
-		<th>Master</th>
-		<th>Tinker</th>
-		<th>Blaster</th>
-		<th>Thinker</th>
-		<th>Striker</th>
-		<th>Changer</th>
-		<th>Trump</th>
-		<th>Stranger</th>
-	</tr>
-	<tr id="site">
-		<td><ul class="list">lol</ul></td>
-		<td><ul class="list">lol</ul></td>
-		<td><ul class="list">lol</ul></td>
-		<td><ul class="list">lol</ul></td>
-		<td><ul class="list">lol</ul></td>
-		<td><ul class="list">lol</ul></td>
-		<td><ul class="list">lol</ul></td>
-		<td><ul class="list">lol</ul></td>
-		<td><ul class="list">lol</ul></td>
-		<td><ul class="list">lol</ul></td>
-		<td><ul class="list">lol</ul></td>
-		<td><ul class="list">lol</ul></td>
-	</tr>
-	<tr>
-		<td>lol</td>
-		<td>lol</td>
-		<td>lol</td>
-		<td>lol</td>
-		<td>lol</td>
-		<td>lol</td>
-		<td>lol</td>
-		<td>lol</td>
-		<td>lol</td>
-		<td>lol</td>
-		<td>lol</td>
-		<td>lol</td>
-	</tr>
-</table>
 <!-- temporary end -->
 
 
@@ -89,5 +70,6 @@
 
 <script src="entity.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>
