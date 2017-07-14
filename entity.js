@@ -132,3 +132,12 @@ function killCape(id){
 	entity.capePurge();
 	document.getElementById("capes").innerHTML = entity.capes;	
 }
+function tabCountUpdate(){
+	lst = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,]
+	elems = document.querySelectorAll(".tab span");
+	for (var i = entity.capePopulation.length - 1; i >= 0; i--) {
+		lst[entity.capePopulation[i].abilityIndex] += 1;
+		elems[entity.capePopulation[i].abilityIndex].innerHTML = "(" + lst[entity.capePopulation[i].abilityIndex] + ")";
+	}
+}
+setInterval(tabCountUpdate, 1000);
