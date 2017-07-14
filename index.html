@@ -1,23 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
- <head>
- <title>Entity Simulator Zero</title>
-<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<style>
- 	table{
- 		background: grey;
- 		border: 1px solid black;
- 	}
- 	tr{
- 		margin: 10px;
- 	}
- 	#capelist{
- 		width:100%;
- 	}
- 	#capelist ul{
- 		font-size: 11px;
- 	}
-</style>
+<head>
+	<title>Entity Simulator Zero</title>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="	sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"></link>
+	<script type="text/javascript">
+	// Change JQueryUI plugin names to fix name collision with Bootstrap.
+		$.widget.bridge('uitooltip', $.ui.tooltip);
+		$.widget.bridge('uibutton', $.ui.button);
+	</script>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src ="entity.js"></script>
+	<script>
+		$( function() {
+		$( "#tabs" ).tabs();
+	  	} );
+	</script>
+	<style>
+	#tabs{
+		width:100%;
+	}
+	.tab.ui-tabs-tab.ui-corner-top.ui-state-default.ui-tab{
+		margin-left:2%;
+	}
+	</style>
 </head>
 <body>
 <h1>Entity Simulator Zero.</h1>
@@ -45,31 +53,34 @@
 	<span id="capes">0</span>
 </div>
 <!-- temporary -->
-<div id="capelist" class="container">
-	<div class="row">
-		<div class="col-sm-1"><p><strong>Mover</strong></p></div>
-		<div class="col-sm-1"><p><strong>Shaker</strong></p></div>
-		<div class="col-sm-1"><p><strong>Brute</strong></p></div>
-		<div class="col-sm-1"><p><strong>Breaker</strong></p></div>
-		<div class="col-sm-1"><p><strong>Master</strong></p></div>
-		<div class="col-sm-1"><p><strong>Tinker</strong></p></div>
-		<div class="col-sm-1"><p><strong>Blaster</strong></p></div>
-		<div class="col-sm-1"><p><strong>Thinker</strong></p></div>
-		<div class="col-sm-1"><p><strong>Striker</strong></p></div>
-		<div class="col-sm-1"><p><strong>Changer</strong></p></div>
-		<div class="col-sm-1"><p><strong>Trump</strong></p></div>
-		<div class="col-sm-1"><p><strong>Stranger</strong></p></div>
-	</div>
+<div id="tabs">
+	<ul>
+		<li class="tab"><a href="#tabs-1">Mover</strong></a></li>
+		<li class="tab"><a href="#tabs-2">Shaker</strong></a></li>
+		<li class="tab"><a href="#tabs-3">Brute</strong></a></li>
+		<li class="tab"><a href="#tabs-4">Breaker</strong></a></li>
+		<li class="tab"><a href="#tabs-5">Master</strong></a></li>
+		<li class="tab"><a href="#tabs-6">Tinker</strong></a></li>
+		<li class="tab"><a href="#tabs-7">Blaster</strong></a></li>
+		<li class="tab"><a href="#tabs-8">Thinker</strong></a></li>
+		<li class="tab"><a href="#tabs-9">Striker</strong></a></li>
+		<li class="tab"><a href="#tabs-10">Changer</strong></a></li>
+		<li class="tab"><a href="#tabs-11">Trump</strong></a></li>
+		<li class="tab"><a href="#tabs-12">Stranger</strong></a></li>
+	</ul>
+	<div id="tabs-1"></div>
+	<div id="tabs-2"></div>
+	<div id="tabs-3"></div>
+	<div id="tabs-4"></div>
+	<div id="tabs-5"></div>
+	<div id="tabs-6"></div>
+	<div id="tabs-7"></div>
+	<div id="tabs-8"></div>
+	<div id="tabs-9"></div>
+	<div id="tabs-10"></div>
+	<div id="tabs-11"></div>
+	<div id="tabs-12"></div>
 </div>
 <!-- temporary end -->
-
-
-
-
-
-
-<script src="entity.js"></script>
-<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>

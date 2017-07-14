@@ -24,7 +24,7 @@ function cape(power, health, ability, age){
 		phIDs += 1;
 	}
 	this.post = function(elem){
-		elem.innerHTML += "<div class = 'capeContainer'id = 'ph" + this.phID + "'><ul><li>Name: "+ this.name +"</li><li>Class: "+ this.ability +"</li><li>Power: "+ this.power +"</li><li>Survivability: "+ this.health +"</li></ul><button onclick='killCape("+this.phID+")' type='button'>Terminate.</button></div>";
+		elem.innerHTML += "<div class = 'capeContainer'id = 'ph" + this.phID + "'><p>Name: "+ this.name +", Class: "+ this.ability +", Power: "+ this.power +", Survivability: "+ this.health +" <button onclick='killCape("+this.phID+")' type='button'>Terminate</button></p></div>";
 		this.posted = true;
 	}
 	this.die = function(){
@@ -114,11 +114,10 @@ function capePowerComparator(a, b){
 function postCapes(){
 	for (var i = entity.capePopulation.length - 1; i >= 0; i--) {
 		c = entity.capePopulation[i];
-		element = document.querySelectorAll(".row .col-sm-1:nth-of-type(" + (c.abilityIndex+1) + ")");
+		element = document.getElementById("tabs-"+ (c.abilityIndex+1));
 		if(c.posted === false){
-		c.post(element[0]);
+			c.post(element);
 		}
-		//element[0].innerHTML = "<li>Name: "+ c.name +"</li><li>Class: "+ c.ability +"</li><li>Power: "+ c.power +"</li><li>Survivability: "+ c.health +"</li>";
 	}
 }
 setInterval(postCapes, 1000);
