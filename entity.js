@@ -104,7 +104,7 @@ function capePowerComparator(a, b){
 function postCapes(){
 	for (var i = entity.capePopulation.length - 1; i >= 0; i--) {
 		c = entity.capePopulation[i];
-		element = document.querySelectorAll("td:nth-of-type(" + (i+1) + ") ul");
+		element = document.querySelectorAll("td:nth-of-type(" + (c.abilityIndex + 1) + ") ul");
 		element[0].innerHTML = "<li>Name: "+ c.name +"</li><li>Class: "+ c.ability +"</li><li>Power: "+ c.power +"</li><li>Survivability: "+ c.health +"</li>";
 	}
 }
