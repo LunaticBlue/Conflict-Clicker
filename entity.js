@@ -114,7 +114,7 @@ function capePowerComparator(a, b){
 function postCapes(){
 	for (var i = entity.capePopulation.length - 1; i >= 0; i--) {
 		c = entity.capePopulation[i];
-		element = document.querySelectorAll(".row div:nth-of-type(" + (c.abilityIndex+1) + ")");
+		element = document.querySelectorAll(".row .col-sm-1:nth-of-type(" + (c.abilityIndex+1) + ")");
 		if(c.posted === false){
 		c.post(element[0]);
 		}
