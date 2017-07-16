@@ -1,5 +1,11 @@
 //Total Conflict
 totalConflict = 0
+function conflictGate(){
+	if(totalConflict >= 100000){
+		elem = document.querySelectorAll(".tab")[12];
+		elem.class = "tab sr-only ui-tabs-tab ui-corner-top ui-state-default ui-tab";
+	}
+}
 
 //Cape constructor
 var phIDs = 0
@@ -30,6 +36,7 @@ function cape(power, health, ability, age){
 	}
 	this.die = function(){
 		document.getElementById("ph"+ this.phID +"").innerHTML = "";
+		tabCountUpdate(this.abilityIndex);
 	}
 }
 //Endbringer constructor
@@ -47,11 +54,10 @@ function endbringer(lethality, range){
 		ebIDs += 1;
 	}
 	this.post = function(elem){
-		elem.innerHTML += "<div class = 'endbringerContainer'id = 'eb" + this.ebID + "'><p>Name: "+ this.name +", Lethality: "+ this.lethality +", Range: "+ this.range +" <button onclick='' type='button'>Activate</button></p></div>";
+		elem.innerHTML += "<div class = 'endbringerContainer'id = 'eb" + this.ebID + "'><p>Name: "+ this.name +", Lethality: "+ this.lethality +", Range: "+ this.range +" <button onclick='endbringerBattle("+ this.ebID +")' type='button'>Activate</button></p></div>";
 		this.posted = true;
 	}
 }
-
 //Entity object and system
 var entity = {
 	race: null,
@@ -108,8 +114,25 @@ var entity = {
 		}
 		this.capes = this.capePopulation.length;
 	},
-	
+	capeFight: function(c1, c2){
+		if (c1.phID == c2.phID){
+			return false;
+		}
+		else if(c1.power > c2.health && c2.power > c1.health){
+			return 1;
+		}
+		else if(c1.power > c2.health){
+			return 2;
+		}
+		else if(c2.power > c1.health){
+			return 3;
+		}
+		else{
+			return 4;
+		}
+	},
 }
+
 //HTML-accessible functions
 function addData(){
 	entity.dataGather();
@@ -181,8 +204,11 @@ function killCape(id){
 	entity.capePurge();
 	document.getElementById("capes").innerHTML = entity.capes;	
 }
-function tabCountUpdate(){
+function tabCountUpdate(index){
 	lst = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+	if(index !== undefined){
+		lst[index] --;
+	}
 	elems = document.querySelectorAll(".tab span");
 	for (var i = entity.capePopulation.length - 1; i >= 0; i--) {
 		lst[entity.capePopulation[i].abilityIndex] += 1;
@@ -194,3 +220,75 @@ function tabCountUpdate(){
 	}
 }
 setInterval(tabCountUpdate, 1000);
+
+function randomFight(){
+	if(entity.capePopulation.length > 50){
+		news = document.getElementById("newsTicker");
+		a = entity.capePopulation[Math.floor(Math.random() * entity.capePopulation.length)]
+		b = entity.capePopulation[Math.floor(Math.random() * entity.capePopulation.length)]
+		result = entity.capeFight(a, b);
+		if(result == 1){
+			news.innerHTML = "<p>"+ a.name +" and "+ b.name +" slain in brutal cape fight!</p>";
+			killCape(a.phID);
+			killCape(b.phID);
+		}
+		else if(result == 2){
+			news.innerHTML = "<p>"+ b.name +" killed by "+ a.name +" in cape fight!</p>";
+			killCape(b.phID);
+		}
+		else if(result == 3){
+			news.innerHTML = "<p>"+ a.name +" killed by "+ b.name +" in cape fight!</p>";
+			killCape(a.phID);
+		}
+		else if(result == 4){
+			news.innerHTML = "<p>News at 11: "+ a.name +" and "+ b.name +" battle!</p>";
+		}
+	}
+}
+setInterval(randomFight, 60000);
+
+function endbringerBattle(ID){
+	if(entity.capes > 35){
+		endbringer = 0;
+		victims = [];
+		victimIDs = [];
+		dead = [];
+		news = document.getElementById("newsTicker");
+		//locate the Endbringer
+		for (var i = entity.endbringerPopulation.length - 1; i >= 0; i--) {
+			if(entity.endbringerPopulation[i].ebID == ID){
+				endbringer = entity.endbringerPopulation[i];
+			}
+		}
+		//grab some victims
+		for (var i = (endbringer.range - 1); i >= 0; i--) {
+			fail = false;
+			random = Math.floor((Math.random() * entity.capePopulation.length) + 1);
+			c = entity.capePopulation[random];
+			//make sure they aren't duplicated
+			for (var j = victimIDs.length - 1; j >= 0; j--) {
+				if(victimIDs[i] == c.phID){
+					fail = true;
+				}
+			}
+			if(fail == false){
+				victims.push(c);
+				victimIDs.push(c.phID);
+			}
+		}
+		//check how many victims died
+		for (var i = victims.length - 1; i >= 0; i--) {
+			if (victims[i].health < endbringer.lethality){
+				dead.push(victims[i]);
+			}
+		}
+		//kill the dead victims, notify the news ticker
+		news.innerHTML = "<p>"+ dead.length +" killed in "+ endbringer.name +" attack.</p>"
+		for (var i = dead.length - 1; i >= 0; i--) {
+			killCape(dead[i].phID);
+		}
+	}
+	else{
+		alert("The population is too low!")
+	}
+}
